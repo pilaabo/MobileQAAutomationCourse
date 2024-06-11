@@ -16,12 +16,10 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation(libs.junit.jupiter)
+    implementation("junit:junit:4.13.2")
+    implementation("io.appium:java-client:7.0.0")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    // This dependency is used by the application.
     implementation(libs.guava)
 }
 
