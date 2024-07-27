@@ -1,6 +1,6 @@
 import lib.CoreTestCase;
-import org.openqa.selenium.By;
 import ui.MainPageObject;
+import ui.SearchPageObject;
 
 public class FirstTest extends CoreTestCase {
     private MainPageObject mainPageObject;
@@ -11,11 +11,11 @@ public class FirstTest extends CoreTestCase {
         mainPageObject = new MainPageObject(driver);
     }
 
-    public void testOne() {
-        mainPageObject.waitForElementAndClick(
-                By.id("org.wikipedia:id/fragment_onboarding_skip_button"),
-                "Cannot find 'Skip' button",
-                5
-        );
+    public void testSearch() {
+        mainPageObject.skipOnboarding();
+        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        searchPageObject.initSearchInput();
+        searchPageObject.typeSearchLine("Java");
+        searchPageObject.waitForSearchResult("Object-oriented programming language");
     }
 }

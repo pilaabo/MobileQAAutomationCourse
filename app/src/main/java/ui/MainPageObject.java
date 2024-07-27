@@ -18,6 +18,14 @@ public class MainPageObject {
         this.driver = driver;
     }
 
+    public WebElement skipOnboarding() {
+        return waitForElementAndClick(
+                By.id("org.wikipedia:id/fragment_onboarding_skip_button"),
+                "Cannot find 'Skip' button",
+                5
+        );
+    }
+
     public WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(errorMessage + "\n");
