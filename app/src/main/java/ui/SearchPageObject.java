@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 public class SearchPageObject extends MainPageObject {
     private static final String SEARCH_INIT_ELEMENT = "org.wikipedia:id/search_container";
     private static final String SEARCH_INPUT = "org.wikipedia:id/search_src_text";
+    public static final String SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn";
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);
@@ -38,6 +39,30 @@ public class SearchPageObject extends MainPageObject {
                 By.xpath("//*[contains(@text, '" + substring + "')]"),
                 "Cannot find search result with substring " + substring,
                 15
+        );
+    }
+
+    public void waitForCancelButtonToAppear() {
+        this.waitForElementPresent(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find 'X' to cancel search",
+                5
+        );
+    }
+
+    public void clickCancelSearch() {
+        this.waitForElementAndClick(
+                By.id(SEARCH_CANCEL_BUTTON),
+                "Cannot find 'X' to cancel search",
+                5
+        );
+    }
+
+    public void waitForCancelButtonToDisappear() {
+        this.waitForElementNotPresent(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "'X' is still present on the page",
+                5
         );
     }
 }
