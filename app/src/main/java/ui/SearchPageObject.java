@@ -44,7 +44,7 @@ public class SearchPageObject extends MainPageObject {
 
     public void waitForCancelButtonToAppear() {
         this.waitForElementPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
+                By.id(SEARCH_CANCEL_BUTTON),
                 "Cannot find 'X' to cancel search",
                 5
         );
@@ -60,7 +60,7 @@ public class SearchPageObject extends MainPageObject {
 
     public void waitForCancelButtonToDisappear() {
         this.waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
+                By.id(SEARCH_CANCEL_BUTTON),
                 "'X' is still present on the page",
                 5
         );
